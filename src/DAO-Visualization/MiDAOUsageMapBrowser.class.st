@@ -88,3 +88,8 @@ MiDAOUsageMapBrowser >> followEntity: anEntity [
 	super followEntity: anEntity.
 	specModel entities: anEntity asMooseGroup.
 ]
+
+{ #category : 'initialization' }
+MiDAOUsageMapBrowser >> initializeLayout [
+	self layout: (SpScrollableLayout with: mainPresenter)
+]
