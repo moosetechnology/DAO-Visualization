@@ -81,3 +81,10 @@ Are you sure you want to continue ?
 MiDAOUsageMapBrowser >> daoPresenter [
 	^ mainPresenter
 ]
+
+{ #category : 'actions' }
+MiDAOUsageMapBrowser >> followEntity: anEntity [
+
+	super followEntity: anEntity.
+	specModel entities: anEntity asMooseGroup.
+]
