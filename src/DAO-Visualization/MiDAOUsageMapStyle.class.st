@@ -5,6 +5,14 @@ Class {
 	#package : 'DAO-Visualization'
 }
 
+{ #category : 'hooks' }
+MiDAOUsageMapStyle >> boxChildrenColorFor: anHNode [
+
+	^ anHNode level odd
+		  ifTrue: [ Color lightGray ]
+		  ifFalse: [ Color veryLightGray ]
+]
+
 { #category : 'private' }
 MiDAOUsageMapStyle >> colorFor: node [
 
