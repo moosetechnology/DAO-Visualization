@@ -13,3 +13,15 @@ Class {
 MiDAOUsageMapPresenter class >> daoVisualizationClass [
 	^ MiDAOUsageMapVisualization
 ]
+
+{ #category : 'accessing' }
+MiDAOUsageMapPresenter >> model [
+
+	^ specModel
+]
+
+{ #category : 'accessing' }
+MiDAOUsageMapPresenter >> model: anObject [
+
+	specModel := anObject
+]
