@@ -21,6 +21,11 @@ MiDAOUsageMapPresenter >> defaultLayout [
 			 yourself)
 ]
 
+{ #category : 'initialization' }
+MiDAOUsageMapPresenter >> initializePresenters [
+	daoVisualisation := self class daoVisualizationClass owner: self
+]
+
 { #category : 'accessing' }
 MiDAOUsageMapPresenter >> model [
 
