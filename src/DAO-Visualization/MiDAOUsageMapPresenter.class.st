@@ -25,3 +25,9 @@ MiDAOUsageMapPresenter >> model: anObject [
 
 	specModel := anObject
 ]
+
+{ #category : 'accessing' }
+MiDAOUsageMapPresenter >> visualization [
+
+	^ daoVisualisation
+]
