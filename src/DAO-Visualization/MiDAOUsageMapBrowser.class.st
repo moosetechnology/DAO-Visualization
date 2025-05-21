@@ -76,3 +76,8 @@ Are you sure you want to continue ?
 
 	^true
 ]
+
+{ #category : 'accessing' }
+MiDAOUsageMapBrowser >> daoPresenter [
+	^ mainPresenter
+]
