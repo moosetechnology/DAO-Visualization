@@ -93,3 +93,14 @@ MiDAOUsageMapBrowser >> followEntity: anEntity [
 MiDAOUsageMapBrowser >> initializeLayout [
 	self layout: (SpScrollableLayout with: mainPresenter)
 ]
+
+{ #category : 'initialization' }
+MiDAOUsageMapBrowser >> initializePresenters [
+
+	specModel browser: self.
+	
+	mainPresenter := self class mapClass owner: self.
+	mainPresenter model: specModel.
+
+	self initializeLayout
+]
