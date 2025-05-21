@@ -14,6 +14,13 @@ MiDAOUsageMapPresenter class >> daoVisualizationClass [
 	^ MiDAOUsageMapVisualization
 ]
 
+{ #category : 'layout' }
+MiDAOUsageMapPresenter >> defaultLayout [
+	^ (SpBoxLayout newTopToBottom
+			 add: daoVisualisation;
+			 yourself)
+]
+
 { #category : 'accessing' }
 MiDAOUsageMapPresenter >> model [
 
