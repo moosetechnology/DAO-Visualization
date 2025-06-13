@@ -77,9 +77,8 @@ MiDAOUsageMapBrowser >> initializeLayout [
 MiDAOUsageMapBrowser >> initializePresenters [
 
 	specModel browser: self.
-	
-	mainPresenter := self class mapClass owner: self.
-	mainPresenter model: specModel.
+
+	mainPresenter := self instantiate: self class daoVisualizationClass.
 
 	self initializeLayout
 ]
