@@ -67,7 +67,10 @@ MiDAOUsageMapBrowser >> followEntity: anEntity [
 
 { #category : 'initialization' }
 MiDAOUsageMapBrowser >> initializeLayout [
-	self layout: (SpScrollableLayout with: mainPresenter)
+
+	self layout: (SpScrollableLayout with: (SpBoxLayout newTopToBottom
+				  add: mainPresenter;
+				  yourself))
 ]
 
 { #category : 'initialization' }
