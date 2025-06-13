@@ -56,25 +56,9 @@ MiDAOUsageMapBrowser class >> windowSize [
 { #category : 'testing' }
 MiDAOUsageMapBrowser >> canFollowEntity: aCollection [
 
-	| uniqType confirm |
-	aCollection isCollection ifFalse: [ ^false ].
-
-	"for example, this allows to open on an empty collection
-	 (to propagate entities later)"
-	aCollection ifEmpty: [ ^true ].
-
-	uniqType := aCollection anyOne class.
-	(aCollection allSatisfy: [ :e | (e class = uniqType) ])
-		ifFalse: [
-			confirm := UIManager default
-				confirm: 'DistributionMap is intend to work on _one_ kind of entity (and their direct ''children'').
-You are propagating several different kinds of entities.
-Are you sure you want to continue ?
-(That might result in unecessary lengthy computation)'.
-			confirm ifFalse: [ ^false ]
-		].
-
-	^true
+	^ aCollection isMooseObject and: [
+		  aCollection isCollection and: [
+			  aCollection allSatisfy: [ :entity | entity usesFamixTrait: FamixTWithAttributes ] ] ]
 ]
 
 { #category : 'accessing' }
