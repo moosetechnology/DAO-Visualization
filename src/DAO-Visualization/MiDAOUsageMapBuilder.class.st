@@ -94,6 +94,11 @@ MiDAOUsageMapBuilder >> doubleClickExpandCollapse: aShape [
 	aShape model expandCollapse
 ]
 
+{ #category : 'accessing' }
+MiDAOUsageMapBuilder >> elements [
+	^ self mapModel entities
+]
+
 { #category : 'visiting' }
 MiDAOUsageMapBuilder >> highlightableLinkedShapes [
 
