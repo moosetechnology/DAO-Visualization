@@ -14,6 +14,29 @@ MiDAOUsageMapStyle >> boxChildrenColorFor: anHNode [
 ]
 
 { #category : 'hooks' }
+MiDAOUsageMapStyle >> buildCompositeEmptyNodeIn: shape [
+
+	| node box rect |
+	node := shape model.
+	shape addAll: (self labelAndIconFor: node).
+	rect := shape children encompassingRectangle.
+	box := RSBox new
+		       position: rect floatCenter;
+		       extent: rect extent + 20;
+		       cornerRadius: self cornerRadius;
+		       color: (self colorFor: node);
+		       border: (self borderFor: node);
+		       yourself.
+	shape add: box.
+	box pushBack.
+	shape schildren: #(  ).
+
+	shape
+		propertyAt: #background put: box;
+		adjustToChildren
+]
+
+{ #category : 'hooks' }
 MiDAOUsageMapStyle >> buildCompositeFullNodeIn: shape [
 
 	| childrenShapes node titleGroup title titleBox children boxChildren list |
