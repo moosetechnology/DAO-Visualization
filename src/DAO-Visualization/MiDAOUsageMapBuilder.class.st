@@ -62,6 +62,12 @@ MiDAOUsageMapBuilder >> buildNodeFromEntity: anEntity [
 		  yourself
 ]
 
+{ #category : 'properties' }
+MiDAOUsageMapBuilder >> childrenOf: anEntity [
+
+	^ mapModel childrenOf: anEntity
+]
+
 { #category : 'as yet unclassified' }
 MiDAOUsageMapBuilder >> colorFromEntity: anEntity [
 
