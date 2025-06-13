@@ -7,3 +7,9 @@ Class {
 	#category : 'DAO-Visualization',
 	#package : 'DAO-Visualization'
 }
+
+{ #category : 'as yet unclassified' }
+MiDAOUsageMapModel >> childrenOf: anEntity [
+
+	^ anEntity attributes
+]
