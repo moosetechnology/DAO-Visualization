@@ -16,7 +16,7 @@ MiDAOUsageMapBrowser class >> menuCommandOn: aBuilder [
 { #category : 'world menu' }
 MiDAOUsageMapBrowser class >> menuItem [
 
-	^ #FilesBrowser
+	^ #DAOBrowser
 ]
 
 { #category : 'world menu' }
