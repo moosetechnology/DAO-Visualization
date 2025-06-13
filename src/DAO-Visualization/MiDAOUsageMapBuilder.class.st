@@ -28,6 +28,50 @@ MiDAOUsageMapBuilder >> addInteractionsToShape: aShape [
 		for: self
 ]
 
+{ #category : 'building' }
+MiDAOUsageMapBuilder >> build [
+
+	rootNode := HNode new.
+
+	rootNode addAll: self createRootNodes.
+
+	self renderIn: self container.
+
+	^ self container
+]
+
+{ #category : 'building' }
+MiDAOUsageMapBuilder >> buildChildrenNodesFrom: anEntity [
+
+	(anEntity usesFamixTrait: FamixTWithAttributes) ifFalse: [ ^ #(  ) ].
+
+	^ ((self mapModel childrenOf: anEntity) collect: [ :childEntity |
+		   self buildNodeFromEntity: childEntity ]) sort: #name ascending
+]
+
+{ #category : 'building' }
+MiDAOUsageMapBuilder >> buildNodeFromEntity: anEntity [
+
+	^ HNode new
+		  rawModel: anEntity;
+		  name: anEntity fullDisplayString;
+		  style: self nodeStyle;
+		  addAll: (self buildChildrenNodesFrom: anEntity);
+		  color: (self colorFromEntity: anEntity);
+		  collapse;
+		  yourself
+]
+
+{ #category : 'building' }
+MiDAOUsageMapBuilder >> createRootNodes [
+	^ (self elements
+		collect: [ :c | self buildNodeFromEntity: c ])
+		sort: [ :a :b |
+			(a rawModel perform: self mapModel widthMetric)
+				> (b rawModel perform: self mapModel widthMetric) ]
+
+]
+
 { #category : 'as yet unclassified' }
 MiDAOUsageMapBuilder >> doubleClickExpandCollapse: aShape [
 
