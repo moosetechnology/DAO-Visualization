@@ -62,6 +62,16 @@ MiDAOUsageMapBuilder >> buildNodeFromEntity: anEntity [
 		  yourself
 ]
 
+{ #category : 'as yet unclassified' }
+MiDAOUsageMapBuilder >> colorFromEntity: anEntity [
+
+	anEntity isClass ifTrue: [
+		^ Color r: 212 / 255 g: 220 / 255 b: 220 / 255 ].
+	anEntity isAttribute ifTrue: [
+		^ Color r: 85 / 255 g: 114 / 255 b: 114 / 255 ].
+	^ Smalltalk ui theme baseColor alpha: 0.7
+]
+
 { #category : 'building' }
 MiDAOUsageMapBuilder >> createRootNodes [
 	^ (self elements
