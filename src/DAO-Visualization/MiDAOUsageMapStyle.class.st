@@ -20,8 +20,8 @@ MiDAOUsageMapStyle >> buildCompositeFullNodeIn: shape [
 	node := shape model.
 	titleGroup := self labelAndIconFor: node.
 	titleBox := RSBox new
-		            extent: titleGroup extent + 10;
-		            color: ((self colorFor: node));
+		            extent: titleGroup extent + 20;
+		            color: (self colorFor: node);
 		            position: titleGroup position;
 		            cornerRadius: self cornerRadius;
 		            yourself.
