@@ -5,6 +5,12 @@ Class {
 	#package : 'DAO-Visualization'
 }
 
+{ #category : 'accessing' }
+MiDAOUsageMapBrowser class >> daoVisualizationClass [
+
+	^ MiDAOUsageMapVisualization
+]
+
 { #category : 'world menu' }
 MiDAOUsageMapBrowser class >> menuCommandOn: aBuilder [
 
