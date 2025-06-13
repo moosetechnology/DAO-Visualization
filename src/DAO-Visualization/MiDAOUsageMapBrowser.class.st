@@ -5,11 +5,6 @@ Class {
 	#package : 'DAO-Visualization'
 }
 
-{ #category : 'accessing' }
-MiDAOUsageMapBrowser class >> mapClass [
-	^ MiDAOUsageMapPresenter
-]
-
 { #category : 'world menu' }
 MiDAOUsageMapBrowser class >> menuCommandOn: aBuilder [
 
@@ -59,11 +54,6 @@ MiDAOUsageMapBrowser >> canFollowEntity: aCollection [
 	^ aCollection isMooseObject and: [
 		  aCollection isCollection and: [
 			  aCollection allSatisfy: [ :entity | entity usesFamixTrait: FamixTWithAttributes ] ] ]
-]
-
-{ #category : 'accessing' }
-MiDAOUsageMapBrowser >> daoPresenter [
-	^ mainPresenter
 ]
 
 { #category : 'actions' }
