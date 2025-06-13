@@ -34,6 +34,18 @@ MiDAOUsageMapBuilder >> doubleClickExpandCollapse: aShape [
 	aShape model expandCollapse
 ]
 
+{ #category : 'accessing' }
+MiDAOUsageMapBuilder >> nodeStyle [
+
+	^ nodeStyle ifNil: [ nodeStyle := MiDAOUsageMapStyle new ]
+]
+
+{ #category : 'accessing' }
+MiDAOUsageMapBuilder >> nodeStyle: anObject [
+
+	^ nodeStyle := anObject 
+]
+
 { #category : 'building' }
 MiDAOUsageMapBuilder >> normalizeMetric: metric threshold: threshold [
 	"When all elements are homogeneous, we want to show that the difference is small by making them look similar. They are considered homogeneous when the difference between the min and max values of the metric is below the threshold."
