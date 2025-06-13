@@ -88,6 +88,31 @@ MiDAOUsageMapBuilder >> doubleClickExpandCollapse: aShape [
 	aShape model expandCollapse
 ]
 
+{ #category : 'hooks' }
+MiDAOUsageMapBuilder >> nodeAnnouncer [
+	"plug new events here"
+
+	baseNode ifNotNil: [ ^ baseNode announcer ].
+	baseNode := RSComposite new
+		            @ self popup;
+		            @
+			            (HGhostDraggable new color:
+					             Smalltalk ui theme caretColor);
+		            @ self menuInteraction;
+		            @ self highlightable;
+		            @ self highlightableLinkedShapes;
+		            @ RSNodeOnTopWhenPositionChanged new;
+		            @ HResizeParentWhenChildMoves new;
+		            yourself.
+
+	baseNode
+		when: RSMouseDoubleLeftClick
+		do: [ :event | self doubleClickExpandCollapse: event shape ]
+		for: self.
+
+	^ baseNode announcer
+]
+
 { #category : 'accessing' }
 MiDAOUsageMapBuilder >> nodeStyle [
 
