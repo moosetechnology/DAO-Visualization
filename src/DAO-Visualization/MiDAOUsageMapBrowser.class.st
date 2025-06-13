@@ -82,3 +82,8 @@ MiDAOUsageMapBrowser >> initializePresenters [
 
 	self initializeLayout
 ]
+
+{ #category : 'accessing' }
+MiDAOUsageMapBrowser >> miSelectedItem [
+	^ specModel entities
+]
