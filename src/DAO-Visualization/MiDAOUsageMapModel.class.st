@@ -13,3 +13,9 @@ MiDAOUsageMapModel >> childrenOf: anEntity [
 
 	^ anEntity attributes
 ]
+
+{ #category : 'as yet unclassified' }
+MiDAOUsageMapModel >> widthMetric [
+
+	^ #numberOfAttributes
+]
