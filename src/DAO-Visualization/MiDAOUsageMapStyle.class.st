@@ -78,7 +78,7 @@ MiDAOUsageMapStyle >> buildCompositeFullNodeIn: shape [
 { #category : 'private' }
 MiDAOUsageMapStyle >> colorFor: node [
 
-	^ node color ifNil: [ Smalltalk ui theme baseColor alpha: 0.7 ]
+	^ node color ifNil: [ self class color ]
 ]
 
 { #category : 'hooks' }
@@ -92,4 +92,48 @@ MiDAOUsageMapStyle >> labelFor: anHNode [
 
 	^ self baseLabel copy
 		  text: ''
+]
+
+{ #category : 'accessing' }
+MiDAOUsageMapStyle >> model [
+
+	^ model
+]
+
+{ #category : 'accessing' }
+MiDAOUsageMapStyle >> model: anObject [
+
+	model := anObject
+]
+
+{ #category : 'hooks' }
+MiDAOUsageMapStyle >> relayout: aGroupOfShapes parent: anHNode [
+
+	anHNode layout ifNil: [
+		RSGridLayout new
+			gapSize: 10;
+			on: aGroupOfShapes.
+		^ self ].
+	anHNode layout on: aGroupOfShapes
+]
+
+{ #category : 'hooks' }
+MiDAOUsageMapStyle >> updateShape: shape with: parent [
+
+	| children boxChildren list style |
+	children := shape parent.
+	children
+		adjustToChildren;
+		padding: 10.
+	parent schildren do: [ :child | child model position: child position ].
+
+	boxChildren := parent children second.
+	"boxChildren := parent propertyAt: #background."
+	list := { children }.
+	style := shape model style.
+	style titleLocation = #below ifTrue: [ list := { children } ].
+	RSVerticalLineLayout new
+		gapSize: 0;
+		on: list.
+	boxChildren fromRectangle: children encompassingRectangle
 ]
