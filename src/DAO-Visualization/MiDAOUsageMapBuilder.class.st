@@ -173,6 +173,41 @@ MiDAOUsageMapBuilder >> iconForTag: aTag [
 	^ self application iconForTag: aTag
 ]
 
+{ #category : 'computing' }
+MiDAOUsageMapBuilder >> informationFor: anEntity from: parentClass [
+
+	^ String streamContents: [ :stream |
+		  | nbUsers nbTotalInvocations nbLocalInvocations |
+		  nbUsers := mapModel numberOfClientsFor: anEntity.
+
+		  nbTotalInvocations := mapModel numberOfAllInvocationsFor: anEntity.
+
+		  nbLocalInvocations := self mapModel
+			                        numberOfInvocationFor: anEntity
+			                        from: parentClass.
+
+		  stream
+			  << anEntity fullDisplayString asText allBold asString;
+			  cr;
+			  << nbUsers asString;
+			  << ' user';
+			  << (nbUsers = 1
+					   ifTrue: [ '' ]
+					   ifFalse: [ 's' ]);
+			  cr;
+			  << nbTotalInvocations asString;
+			  << ' total invocation';
+			  << (nbTotalInvocations = 1
+					   ifTrue: [ '' ]
+					   ifFalse: [ 's' ]);
+			  cr;
+			  << nbLocalInvocations asString;
+			  << ' local invocation';
+			  << (nbLocalInvocations = 1
+					   ifTrue: [ '' ]
+					   ifFalse: [ 's' ]) ]
+]
+
 { #category : 'accessing' }
 MiDAOUsageMapBuilder >> legendTagBuilder [
 	^ legendTagBuilder
