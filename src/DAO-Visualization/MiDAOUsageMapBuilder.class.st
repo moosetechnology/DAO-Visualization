@@ -95,6 +95,11 @@ MiDAOUsageMapBuilder >> createRootNodes [
 
 ]
 
+{ #category : 'default' }
+MiDAOUsageMapBuilder >> defaultMenuManager [
+	^ MiDAOMenuManager new
+]
+
 { #category : 'as yet unclassified' }
 MiDAOUsageMapBuilder >> doubleClickExpandCollapse: aShape [
 
@@ -138,6 +143,19 @@ MiDAOUsageMapBuilder >> highlightableLinkedShapes [
 					                     selector: #color ]
 			                     for: self;
 			                     yourself ]
+]
+
+{ #category : 'accessing' }
+MiDAOUsageMapBuilder >> menuManager [
+
+	^ menuManager
+]
+
+{ #category : 'accessing' }
+MiDAOUsageMapBuilder >> menuManager: anObject [
+
+	menuManager := anObject.
+	menuManager mapBuilder: self.
 ]
 
 { #category : 'hooks' }
