@@ -153,6 +153,15 @@ MiDAOUsageMapBuilder >> elements [
 ]
 
 { #category : 'accessing' }
+MiDAOUsageMapBuilder >> highlightManager [
+
+	^ highlightManager ifNil: [
+		  highlightManager := MiDAOHighlightManager new
+			                      mapBuilder: self;
+			                      yourself ]
+]
+
+{ #category : 'accessing' }
 MiDAOUsageMapBuilder >> legendTagBuilder [
 	^ legendTagBuilder
 ]
