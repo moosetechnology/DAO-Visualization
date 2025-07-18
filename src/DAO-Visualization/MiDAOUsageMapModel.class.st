@@ -86,6 +86,13 @@ MiDAOUsageMapModel >> numberOfClientsFor: anEntity [
 	^ (self clientsOf: anEntity) size
 ]
 
+{ #category : 'building' }
+MiDAOUsageMapModel >> numberOfInvocationFor: anEntity from: aClient [
+
+	^ (aClient queryAllOutgoingInvocations select: [ :invocation |
+		   invocation candidates first parentType = anEntity ]) size
+]
+
 { #category : 'as yet unclassified' }
 MiDAOUsageMapModel >> widthMetric [
 
