@@ -167,6 +167,13 @@ MiDAOUsageMapBuilder >> highlightManager [
 ]
 
 { #category : 'accessing' }
+MiDAOUsageMapBuilder >> iconForTag: aTag [
+
+	self flag: 'move to model?'.
+	^ self application iconForTag: aTag
+]
+
+{ #category : 'accessing' }
 MiDAOUsageMapBuilder >> legendTagBuilder [
 	^ legendTagBuilder
 ]
