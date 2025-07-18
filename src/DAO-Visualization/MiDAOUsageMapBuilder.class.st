@@ -46,6 +46,12 @@ MiDAOUsageMapBuilder >> addInteractionsToShape: aShape [
 		for: self
 ]
 
+{ #category : 'accessing' }
+MiDAOUsageMapBuilder >> application [
+
+	^self mapModel currentApplication
+]
+
 { #category : 'building' }
 MiDAOUsageMapBuilder >> build [
 
@@ -157,6 +163,17 @@ MiDAOUsageMapBuilder >> highlightableLinkedShapes [
 ]
 
 { #category : 'accessing' }
+MiDAOUsageMapBuilder >> legendTagBuilder [
+	^ legendTagBuilder
+]
+
+{ #category : 'accessing' }
+MiDAOUsageMapBuilder >> legendTagBuilder: aMiCoTagLegendBuilder [ 
+	legendTagBuilder := aMiCoTagLegendBuilder.
+	legendTagBuilder mapBuilder: self.
+]
+
+{ #category : 'accessing' }
 MiDAOUsageMapBuilder >> menuManager [
 
 	^ menuManager
@@ -240,4 +257,14 @@ MiDAOUsageMapBuilder >> renderIn: aCanvas [
 	self normalizeShapes.
 	self renderLinesIn: aCanvas.
 	self layoutOn: rootShapes parent: rootNode
+]
+
+{ #category : 'accessing' }
+MiDAOUsageMapBuilder >> visualization [
+	^ visualization
+]
+
+{ #category : 'accessing' }
+MiDAOUsageMapBuilder >> visualization: aVisualization [
+	visualization := aVisualization
 ]
