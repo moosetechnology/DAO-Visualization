@@ -49,6 +49,15 @@ MiDAOUsageMapModel >> changeTagsDuring: aBlockClosure [
 	self selectedTag: lastTag
 ]
 
+{ #category : 'as yet unclassified' }
+MiDAOUsageMapModel >> clientsOf: anEntity [
+
+	^ (anEntity allClients
+		   collect: [ :client | client parentType ]
+		   thenReject: [ :client | client name endsWith: 'Test' ]) asSet
+		  asOrderedCollection
+]
+
 { #category : 'accessing' }
 MiDAOUsageMapModel >> entities [
 	^ entities
