@@ -33,11 +33,14 @@ MiDAOUsageMapStyle >> buildCompositeEmptyNodeIn: shape [
 	rect := shape children encompassingRectangle.
 	box := RSBox new
 		       position: rect floatCenter;
-		       extent: rect extent + 20;
+		       size: 10;
 		       cornerRadius: self cornerRadius;
 		       color: (self colorFor: node);
 		       border: (self borderFor: node);
 		       yourself.
+	node level > 1 ifTrue: [
+		box width: (self model scale scale:
+				 (self model numberOfAllInvocationsFor: node rawModel)) ].
 	shape add: box.
 	box pushBack.
 	shape schildren: #(  ).
