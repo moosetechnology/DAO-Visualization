@@ -42,6 +42,14 @@ MiDAOUsageMapModel >> automaticColorForClient: aClient [
 ]
 
 { #category : 'as yet unclassified' }
+MiDAOUsageMapModel >> changeTagsDuring: aBlockClosure [
+	| lastTag |
+	lastTag := self selectedTag.
+	aBlockClosure value.
+	self selectedTag: lastTag
+]
+
+{ #category : 'as yet unclassified' }
 MiDAOUsageMapModel >> childrenOf: anEntity [
 
 	^ anEntity attributes
