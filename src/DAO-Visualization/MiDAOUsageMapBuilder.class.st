@@ -85,6 +85,25 @@ MiDAOUsageMapBuilder >> buildClientRootNodeFrom: anEntity [
 		  yourself
 ]
 
+{ #category : 'building' }
+MiDAOUsageMapBuilder >> buildDAOChildrenNodeFromEntity: anEntity from: parentClass [
+
+	^ HNode new
+		  rawModel: anEntity;
+		  name: (self informationFor: anEntity from: parentClass);
+		  style: self nodeStyle;
+		  addAll: (self buildDAOChildrenNodesFrom: anEntity);
+		  color: MiDAOUsageMapStyle color;
+		  yourself
+]
+
+{ #category : 'building' }
+MiDAOUsageMapBuilder >> buildDAOChildrenNodesFrom: anEntity [
+
+	^ ((self mapModel usedEntitiesBy: anEntity) collect: [ :childEntity |
+		   self buildDAOChildrenNodeFromEntity: childEntity from: anEntity ]) sort: #name ascending
+]
+
 { #category : 'as yet unclassified' }
 MiDAOUsageMapBuilder >> colorFromEntity: anEntity [
 
