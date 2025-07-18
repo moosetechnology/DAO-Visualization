@@ -25,3 +25,8 @@ MiDAOUsageMapVisualization >> buildInCanvas: aCanvas [
 
 	^ aCanvas @ RSCanvasController new noLegend
 ]
+
+{ #category : 'as yet unclassified' }
+MiDAOUsageMapVisualization >> updateClientColor: aClient fromTag: aTag [
+	builder updateClientColor: aClient fromTag: aTag
+]
