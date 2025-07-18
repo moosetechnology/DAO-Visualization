@@ -81,8 +81,6 @@ MiDAOUsageMapBrowser >> initializePresenters [
 	specModel browser: self.
 
 	mainPresenter := self instantiate: self class daoVisualizationClass.
-
-	self initializeLayout
 ]
 
 { #category : 'accessing' }
