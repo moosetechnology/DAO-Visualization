@@ -12,6 +12,11 @@ Class {
 	#package : 'DAO-Visualization'
 }
 
+{ #category : 'defaults' }
+MiDAOHighlightManager class >> highlightColor [
+	^ Color orange
+]
+
 { #category : 'hooks' }
 MiDAOHighlightManager >> highlightClass: aClass [
 
