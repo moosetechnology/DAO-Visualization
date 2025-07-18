@@ -208,6 +208,14 @@ MiDAOUsageMapBuilder >> informationFor: anEntity from: parentClass [
 					   ifFalse: [ 's' ]) ]
 ]
 
+{ #category : 'hooks' }
+MiDAOUsageMapBuilder >> initialize [
+
+	super initialize.
+	self menuManager: self defaultMenuManager.
+	self legendTagBuilder: self defaultTagLegendBuilder.
+]
+
 { #category : 'accessing' }
 MiDAOUsageMapBuilder >> legendTagBuilder [
 	^ legendTagBuilder
