@@ -73,6 +73,18 @@ MiDAOUsageMapBuilder >> build [
 	^ self container
 ]
 
+{ #category : 'building' }
+MiDAOUsageMapBuilder >> buildClientRootNodeFrom: anEntity [
+
+	^ HNode new
+		  rawModel: anEntity;
+		  name: anEntity fullDisplayString;
+		  style: self nodeStyle;
+		  addAll: (self buildDAOChildrenNodesFrom: anEntity);
+		  color: (self colorFromEntity: anEntity);
+		  yourself
+]
+
 { #category : 'as yet unclassified' }
 MiDAOUsageMapBuilder >> colorFromEntity: anEntity [
 
