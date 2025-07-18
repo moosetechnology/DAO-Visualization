@@ -55,9 +55,10 @@ MiDAOUsageMapBuilder >> application [
 { #category : 'building' }
 MiDAOUsageMapBuilder >> build [
 
+	self applyLayout.
 	rootNode := HNode new.
 
-	rootNode addAll: self createRootNodes.
+	rootNode addAll: self createClientRootNodes.
 
 	self renderIn: self container.
 
@@ -122,23 +123,17 @@ MiDAOUsageMapBuilder >> menuManager: anObject [
 MiDAOUsageMapBuilder >> nodeAnnouncer [
 	"plug new events here"
 
-	baseNode ifNotNil: [ ^ baseNode announcer ].
+	"baseNode ifNotNil: [ ^ baseNode announcer ]."
 	baseNode := RSComposite new
 		            @ self popup;
 		            @
 			            (HGhostDraggable new color:
 					             Smalltalk ui theme caretColor);
 		            @ self menuInteraction;
-		            @ self highlightable;
-		            @ self highlightableLinkedShapes;
+		           
 		            @ RSNodeOnTopWhenPositionChanged new;
 		            @ HResizeParentWhenChildMoves new;
 		            yourself.
-
-	baseNode
-		when: RSMouseDoubleLeftClick
-		do: [ :event | self doubleClickExpandCollapse: event shape ]
-		for: self.
 
 	^ baseNode announcer
 ]
@@ -154,7 +149,8 @@ MiDAOUsageMapBuilder >> nodeLayout [
 { #category : 'accessing' }
 MiDAOUsageMapBuilder >> nodeStyle [
 
-	^ nodeStyle ifNil: [ nodeStyle := MiDAOUsageMapStyle new ]
+	^ nodeStyle ifNil: [
+		  nodeStyle := MiDAOUsageMapStyle new model: self mapModel ]
 ]
 
 { #category : 'accessing' }
