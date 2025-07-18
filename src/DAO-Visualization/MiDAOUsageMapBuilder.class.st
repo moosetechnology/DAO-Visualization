@@ -147,6 +147,11 @@ MiDAOUsageMapBuilder >> defaultMenuManager [
 	^ MiDAOMenuManager new
 ]
 
+{ #category : 'default' }
+MiDAOUsageMapBuilder >> defaultTagLegendBuilder [
+	^ MiDAOTagLegendBuilder new
+]
+
 { #category : 'accessing' }
 MiDAOUsageMapBuilder >> elements [
 	^ self mapModel entities
@@ -236,7 +241,15 @@ MiDAOUsageMapBuilder >> renderIn: aCanvas [
 	self addInteractions: shapes.
 	aCanvas schildren: rootShapes.
 	aCanvas addAll: rootShapes.
-	aCanvas @ self menuInteraction.
+	aCanvas @ self menuManager.
+
+	aCanvas
+		when: RSExtentChangedEvent send: #applyLayout to: self.
+
+	self legendTagBuilder
+		container: aCanvas;
+		build.
+
 	rootNode
 		when: HNodeAddedEvent
 		do: [ :evt |
@@ -247,8 +260,6 @@ MiDAOUsageMapBuilder >> renderIn: aCanvas [
 			aCanvas add: newShape.
 			aCanvas signalUpdate ]
 		for: self.
-
-	self normalizeShapes.
 	self renderLinesIn: aCanvas.
 	self layoutOn: rootShapes parent: rootNode
 ]
