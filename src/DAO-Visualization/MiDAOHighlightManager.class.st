@@ -20,3 +20,10 @@ MiDAOHighlightManager >> highlightClass: aClass [
 	highlightedShapes do: [ :shape |
 		(shape propertyAt: #background) color: self class highlightColor ]
 ]
+
+{ #category : 'initialization' }
+MiDAOHighlightManager >> resetHighlights [
+
+	highlightedShapes do: [ :shape | (shape propertyAt: #background) color: MiDAOUsageMapStyle color ].
+	highlightedShapes := OrderedCollection new
+]
