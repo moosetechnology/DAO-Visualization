@@ -97,13 +97,13 @@ MiDAOUsageMapBuilder >> colorFromEntity: anEntity [
 ]
 
 { #category : 'building' }
-MiDAOUsageMapBuilder >> createRootNodes [
-	^ (self elements
-		collect: [ :c | self buildNodeFromEntity: c ])
-		sort: [ :a :b |
-			(a rawModel perform: self mapModel widthMetric)
-				> (b rawModel perform: self mapModel widthMetric) ]
+MiDAOUsageMapBuilder >> createClientRootNodes [
 
+	^ (mapModel allClients
+		   collect: [ :e | self buildClientRootNodeFrom: e ]
+		   thenReject: [ :node | node isNil ]) sort: [ :a :b |
+		  (a rawModel perform: self mapModel widthMetric)
+		  > (b rawModel perform: self mapModel widthMetric) ]
 ]
 
 { #category : 'default' }
