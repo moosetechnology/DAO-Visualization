@@ -18,6 +18,30 @@ MiDAOUsageMapModel >> allClients [
 ]
 
 { #category : 'as yet unclassified' }
+MiDAOUsageMapModel >> automaticColor [
+
+	self changeTagsDuring: [ 
+		self allClients
+			do: [:client | self automaticColorForClient: client ].
+	]
+	
+]
+
+{ #category : 'as yet unclassified' }
+MiDAOUsageMapModel >> automaticColorForClient: aClient [
+
+	| daos tags |
+	daos := (aClient attributes collect: #declaredType) select: [ :type | self entities includes: type ].
+	
+	tags := (daos flatCollect: [ :dao | dao allTags ]) asSet asOrderedCollection.
+	tags ifEmpty: [ ^ self ].
+	tags size > 1 ifTrue: [ ^ self ].
+
+	self removeTagOn: aClient.
+	aClient tagWith: tags first
+]
+
+{ #category : 'as yet unclassified' }
 MiDAOUsageMapModel >> childrenOf: anEntity [
 
 	^ anEntity attributes
