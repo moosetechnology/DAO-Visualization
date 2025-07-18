@@ -49,12 +49,6 @@ MiDAOUsageMapModel >> changeTagsDuring: aBlockClosure [
 	self selectedTag: lastTag
 ]
 
-{ #category : 'as yet unclassified' }
-MiDAOUsageMapModel >> childrenOf: anEntity [
-
-	^ anEntity attributes
-]
-
 { #category : 'accessing' }
 MiDAOUsageMapModel >> entities [
 	^ entities
