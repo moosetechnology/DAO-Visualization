@@ -52,6 +52,14 @@ MiDAOUsageMapBuilder >> application [
 	^self mapModel currentApplication
 ]
 
+{ #category : 'building - graph' }
+MiDAOUsageMapBuilder >> applyLayout [
+
+	RSFlowLayout new
+		gapSize: 20;
+		on: self canvas nodes
+]
+
 { #category : 'building' }
 MiDAOUsageMapBuilder >> build [
 
