@@ -58,7 +58,7 @@ MiDAOUsageMapModel >> clientsOf: anEntity [
 		  asOrderedCollection
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 MiDAOUsageMapModel >> entities [
 	^ entities
 ]
@@ -68,7 +68,7 @@ MiDAOUsageMapModel >> entities: anObject [
 	entities := anObject
 ]
 
-{ #category : 'accessing' }
+{ #category : 'as yet unclassified' }
 MiDAOUsageMapModel >> miSelectedItem [
 	^ self entities
 ]
@@ -99,6 +99,20 @@ MiDAOUsageMapModel >> removeTagOn: aMooseEntity [
 		detect: [ :aTag | aTag isHidden not ]
 		ifOne: [ :aTag | aTag removeReference: aMooseEntity ]
 		ifNone: [ "nothing" ]
+]
+
+{ #category : 'as yet unclassified' }
+MiDAOUsageMapModel >> scale [
+	^ scale ifNil: [
+		  | invocs |
+		  invocs := self entities asOrderedCollection collect: [ :entity |
+			            self numberOfAllInvocationsFor: entity. ].
+
+		  scale := NSScale linear
+			           range: { 10. 100 };
+			           domain: {
+					           invocs min.
+					           invocs max } ]
 ]
 
 { #category : 'as yet unclassified' }
