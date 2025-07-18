@@ -18,17 +18,28 @@ Class {
 }
 
 { #category : 'hooks' }
+MiDAOUsageMapBuilder >> addDAOInteractions: aShape [
+
+	aShape
+		when: RSMouseLeftClick
+		do: [ :evt |
+			self highlightManager resetHighlights.
+			self highlightManager highlightClass: evt shape model rawModel ]
+		for: self
+]
+
+{ #category : 'hooks' }
 MiDAOUsageMapBuilder >> addInteractionsToShape: aShape [
 
 	| node |
 	aShape announcer: self nodeAnnouncer.
+
+	aShape model level > 1 ifTrue: [ self addDAOInteractions: aShape ].
 	node := aShape model.
 	node
 		removeInteractionIfPresent: self class;
-		when: HCollapseEvent do: [ :evt |
-			self rebuildShape: aShape.
-			self normalizeShapes.
-			self relayout: self container nodes parent: rootNode ]
+		when: HCollapseEvent
+		do: [ :evt | self rebuildShape: aShape ]
 		for: self;
 		when: HExpandEvent
 		do: [ :evt | self rebuildRootShape: aShape ]
