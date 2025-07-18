@@ -93,6 +93,14 @@ MiDAOUsageMapModel >> numberOfInvocationFor: anEntity from: aClient [
 		   invocation candidates first parentType = anEntity ]) size
 ]
 
+{ #category : 'removing' }
+MiDAOUsageMapModel >> removeTagOn: aMooseEntity [
+	aMooseEntity allTags
+		detect: [ :aTag | aTag isHidden not ]
+		ifOne: [ :aTag | aTag removeReference: aMooseEntity ]
+		ifNone: [ "nothing" ]
+]
+
 { #category : 'as yet unclassified' }
 MiDAOUsageMapModel >> widthMetric [
 
