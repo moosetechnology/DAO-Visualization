@@ -22,6 +22,20 @@ MiDAOHighlightManager >> highlightClass: aClass [
 ]
 
 { #category : 'initialization' }
+MiDAOHighlightManager >> initialize [
+
+	super initialize.
+
+	highlightedShapes := OrderedCollection new
+]
+
+{ #category : 'accessing' }
+MiDAOHighlightManager >> mapBuilder: anObject [
+
+	mapBuilder := anObject
+]
+
+{ #category : 'initialization' }
 MiDAOHighlightManager >> resetHighlights [
 
 	highlightedShapes do: [ :shape | (shape propertyAt: #background) color: MiDAOUsageMapStyle color ].
