@@ -80,6 +80,12 @@ MiDAOUsageMapModel >> numberOfAllInvocationsFor: anEntity [
 		  sum + (self numberOfInvocationFor: anEntity from: client) ]
 ]
 
+{ #category : 'utils' }
+MiDAOUsageMapModel >> numberOfClientsFor: anEntity [
+
+	^ (self clientsOf: anEntity) size
+]
+
 { #category : 'as yet unclassified' }
 MiDAOUsageMapModel >> widthMetric [
 
