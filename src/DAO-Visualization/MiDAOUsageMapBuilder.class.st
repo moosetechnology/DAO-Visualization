@@ -83,6 +83,18 @@ MiDAOUsageMapBuilder >> colorFromEntity: anEntity [
 	^ Smalltalk ui theme baseColor alpha: 0.7
 ]
 
+{ #category : 'accessing' }
+MiDAOUsageMapBuilder >> colorFromTags: tags [
+	tags ifNil:  [ ^ Color colorFrom: 'f5f5f5' ].
+	(tags isCollection and: [ tags isEmpty ]) ifTrue: [ ^ Color colorFrom: 'f5f5f5' ].
+	(tags isCollection and: [ tags size = 1 ]) ifTrue: [ ^ self colorFromTags: tags anyOne ].
+	tags isCollection ifTrue: [ ^ Color black ].
+
+	(tags isTag and: [ tags isHidden ]) ifTrue: [ ^ Color colorFrom: 'f5f5f5' ].
+	tags isTag ifTrue: [ ^ tags color ].
+	^ Error signal: 'A famixTag was expected'
+]
+
 { #category : 'building' }
 MiDAOUsageMapBuilder >> createClientRootNodes [
 
