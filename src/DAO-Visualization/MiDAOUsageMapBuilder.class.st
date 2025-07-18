@@ -60,6 +60,12 @@ MiDAOUsageMapBuilder >> applyLayout [
 		on: self canvas nodes
 ]
 
+{ #category : 'as yet unclassified' }
+MiDAOUsageMapBuilder >> automaticColor [
+
+	self mapModel automaticColor
+]
+
 { #category : 'building' }
 MiDAOUsageMapBuilder >> build [
 
@@ -236,6 +242,17 @@ MiDAOUsageMapBuilder >> renderIn: aCanvas [
 	self normalizeShapes.
 	self renderLinesIn: aCanvas.
 	self layoutOn: rootShapes parent: rootNode
+]
+
+{ #category : 'as yet unclassified' }
+MiDAOUsageMapBuilder >> updateClientColor: aClient fromTag: aTag [
+1halt.
+
+	(self canvas deepShapesFromModel: aClient) do: [ :shape |
+		shape color: aTag color ].
+
+
+	self canvas signalUpdate
 ]
 
 { #category : 'update' }
