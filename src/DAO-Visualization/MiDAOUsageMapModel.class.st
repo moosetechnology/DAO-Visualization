@@ -74,6 +74,13 @@ MiDAOUsageMapModel >> miSelectedItem [
 ]
 
 { #category : 'as yet unclassified' }
+MiDAOUsageMapModel >> numberOfAllInvocationsFor: anEntity [
+
+	^ self allClients inject: 0 into: [ :sum :client |
+		  sum + (self numberOfInvocationFor: anEntity from: client) ]
+]
+
+{ #category : 'as yet unclassified' }
 MiDAOUsageMapModel >> widthMetric [
 
 	^ #numberOfAttributes
