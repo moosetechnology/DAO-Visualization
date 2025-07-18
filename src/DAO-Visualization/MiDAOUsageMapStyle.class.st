@@ -1,9 +1,20 @@
+"
+I am a style definition used by the DAOUsageMap visualization builder.
+"
 Class {
 	#name : 'MiDAOUsageMapStyle',
 	#superclass : 'HDefaultStyle',
+	#instVars : [
+		'model'
+	],
 	#category : 'DAO-Visualization',
 	#package : 'DAO-Visualization'
 }
+
+{ #category : 'accessing' }
+MiDAOUsageMapStyle class >> color [
+	^ Smalltalk ui theme baseColor alpha: 0.7
+]
 
 { #category : 'hooks' }
 MiDAOUsageMapStyle >> boxChildrenColorFor: anHNode [
