@@ -1,12 +1,21 @@
+"
+A model for the DAOUsageMap browser
+"
 Class {
 	#name : 'MiDAOUsageMapModel',
 	#superclass : 'MiAbstractModel',
 	#instVars : [
-		'entities'
+		'entities',
+		'scale'
 	],
 	#category : 'DAO-Visualization',
 	#package : 'DAO-Visualization'
 }
+
+{ #category : 'accessing' }
+MiDAOUsageMapModel >> allClients [
+	^ (self entities flatCollect: [ :e | self clientsOf: e ]) asSet asOrderedCollection
+]
 
 { #category : 'as yet unclassified' }
 MiDAOUsageMapModel >> childrenOf: anEntity [
