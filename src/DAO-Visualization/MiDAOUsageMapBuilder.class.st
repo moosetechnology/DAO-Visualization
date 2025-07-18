@@ -187,6 +187,14 @@ MiDAOUsageMapBuilder >> renderIn: aCanvas [
 	self layoutOn: rootShapes parent: rootNode
 ]
 
+{ #category : 'update' }
+MiDAOUsageMapBuilder >> updateShapeColors [
+	self canvas allChildren
+		select: [ :shape | shape model notNil ]
+		thenDo: [ :shape | shape color: (self colorFromTags: shape model tag) ].
+	self canvas signalUpdate.
+]
+
 { #category : 'accessing' }
 MiDAOUsageMapBuilder >> visualization [
 	^ visualization
