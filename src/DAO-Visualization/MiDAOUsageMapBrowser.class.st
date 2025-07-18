@@ -87,3 +87,8 @@ MiDAOUsageMapBrowser >> initializePresenters [
 MiDAOUsageMapBrowser >> miSelectedItem [
 	^ specModel entities
 ]
+
+{ #category : 'as yet unclassified' }
+MiDAOUsageMapBrowser >> updateClientColor: aClient fromTag: aTag [
+	mainPresenter updateClientColor: aClient fromTag: aTag
+]
