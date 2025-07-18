@@ -64,34 +64,6 @@ MiDAOUsageMapBuilder >> build [
 	^ self container
 ]
 
-{ #category : 'building' }
-MiDAOUsageMapBuilder >> buildChildrenNodesFrom: anEntity [
-
-	(anEntity usesFamixTrait: FamixTWithAttributes) ifFalse: [ ^ #(  ) ].
-
-	^ ((self mapModel childrenOf: anEntity) collect: [ :childEntity |
-		   self buildNodeFromEntity: childEntity ]) sort: #name ascending
-]
-
-{ #category : 'building' }
-MiDAOUsageMapBuilder >> buildNodeFromEntity: anEntity [
-
-	^ HNode new
-		  rawModel: anEntity;
-		  name: anEntity fullDisplayString;
-		  style: self nodeStyle;
-		  addAll: (self buildChildrenNodesFrom: anEntity);
-		  color: (self colorFromEntity: anEntity);
-		  collapse;
-		  yourself
-]
-
-{ #category : 'properties' }
-MiDAOUsageMapBuilder >> childrenOf: anEntity [
-
-	^ mapModel childrenOf: anEntity
-]
-
 { #category : 'as yet unclassified' }
 MiDAOUsageMapBuilder >> colorFromEntity: anEntity [
 
@@ -115,12 +87,6 @@ MiDAOUsageMapBuilder >> createClientRootNodes [
 { #category : 'default' }
 MiDAOUsageMapBuilder >> defaultMenuManager [
 	^ MiDAOMenuManager new
-]
-
-{ #category : 'as yet unclassified' }
-MiDAOUsageMapBuilder >> doubleClickExpandCollapse: aShape [
-
-	aShape model expandCollapse
 ]
 
 { #category : 'accessing' }
