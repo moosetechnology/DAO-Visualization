@@ -128,40 +128,6 @@ MiDAOUsageMapBuilder >> elements [
 	^ self mapModel entities
 ]
 
-{ #category : 'visiting' }
-MiDAOUsageMapBuilder >> highlightableLinkedShapes [
-
-	^ highlightShapes ifNil: [
-		  highlightShapes := RSHighlightable new
-			                     highlightShapes: [ :shape |
-				                     | list |
-				                     list := Set new.
-				                     shape connectedLines do: [ :line |
-						                     shape = line from
-							                     ifTrue: [
-								                     list add:
-										                     (line to propertyAt: #background) ]
-							                     ifFalse: [
-								                     list add:
-										                     (line from propertyAt: #background) ] ].
-				                     list asOrderedCollection ];
-			                     when: RSHighlightEvent do: [ :evt |
-				                     | color |
-				                     color := Color fromHexString: '9DD0B3'.
-				                     highlightable
-					                     record: evt shape
-					                     selector: #color
-					                     value: color ]
-			                     for: self;
-			                     when: RSUnHighlightEvent
-			                     do: [ :evt |
-				                     highlightable
-					                     restore: evt shape
-					                     selector: #color ]
-			                     for: self;
-			                     yourself ]
-]
-
 { #category : 'accessing' }
 MiDAOUsageMapBuilder >> legendTagBuilder [
 	^ legendTagBuilder
