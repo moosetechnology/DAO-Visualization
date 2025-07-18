@@ -102,6 +102,13 @@ MiDAOUsageMapModel >> removeTagOn: aMooseEntity [
 ]
 
 { #category : 'as yet unclassified' }
+MiDAOUsageMapModel >> usedEntitiesBy: aClient [
+
+	^ (aClient attributes collect: #declaredType) select: [ :each |
+		  self entities includes: each ]
+]
+
+{ #category : 'as yet unclassified' }
 MiDAOUsageMapModel >> widthMetric [
 
 	^ #numberOfAttributes
