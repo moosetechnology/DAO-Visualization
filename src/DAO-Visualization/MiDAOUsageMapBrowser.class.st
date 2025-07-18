@@ -1,3 +1,7 @@
+"
+This browser displays the usage relationships of DAOs across various clients (such as services and repositories). It allows for a clear visualization of how data access objects are consumed by different parts of the system.
+This Moose-based visualization helps identify coupling patterns, potential design flaws, and areas for architectural improvement, facilitating better maintainability and refactoring decisions.
+"
 Class {
 	#name : 'MiDAOUsageMapBrowser',
 	#superclass : 'MiAbstractVisualizationBrowser',
@@ -69,14 +73,6 @@ MiDAOUsageMapBrowser >> followEntity: anEntity [
 	specModel entities: anEntity asMooseGroup.
 	
 	self runVisualization
-]
-
-{ #category : 'initialization' }
-MiDAOUsageMapBrowser >> initializeLayout [
-
-	self layout: (SpScrollableLayout with: (SpBoxLayout newTopToBottom
-				  add: mainPresenter;
-				  yourself))
 ]
 
 { #category : 'initialization' }
